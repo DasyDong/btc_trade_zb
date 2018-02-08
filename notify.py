@@ -1,16 +1,19 @@
 # /usr/bin/python
 from __future__ import absolute_import
 from zb import get_market, get_usdt
+import os, sys
 from mail import send_email_qq, send_email_ctrip
 
 
 def notify():
-    with open('zb_market', 'rb') as ff:
+    with open(sys.path[0] + '/zb_market', 'rb') as ff:
         content = ff.readlines()
         notify_message = []
         for line in content:
-            print line.strip('\n')
-            name, price = line.split(':')
+            try:
+                name, price = line.split(':')
+            except Exception as ex:
+                print line
             try:
                 price_new = float(get_usdt(name))
             except Exception as ex:

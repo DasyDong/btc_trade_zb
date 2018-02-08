@@ -7,8 +7,8 @@ CTRIP={
 
 QQ={
     'smtpserver': '',
-    'qq':'',
-    'password': '',
+    'qq':[],
+    'password': [],
     'receive': ['']
 }
 

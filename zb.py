@@ -105,7 +105,7 @@ def get_market():
     text = requests.get(url, timeout=30).text
     content = json.loads(text)
     keys = content.keys()
-    with open('zb_market', 'wb') as ff:
+    with open(sys.path[0] + '/zb_market', 'wb') as ff:
         for key in keys:
             if not key.endswith('_usdt'):
                 continue
