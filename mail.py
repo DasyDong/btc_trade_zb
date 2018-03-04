@@ -27,7 +27,7 @@ def send_email_qq(message):
     #邮件的正文内容
     mail_content = message
     #邮件标题
-    mail_title = '你现在在进行一项用python登录qq邮箱发邮件的测试'
+    mail_title = message #'你现在在进行一项用python登录qq邮箱发邮件的测试'
 
     #ssl登录
     smtp = SMTP_SSL(smtp_server)
