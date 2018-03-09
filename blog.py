@@ -5,6 +5,8 @@ import sys
 from mail import send_email_qq
 
 if __name__ == '__main__':
+    s = requests.session()
+    s.keep_alive = False
     blog_id_path = sys.path[0] + '/blog_id'
     with open(blog_id_path, 'r') as ff:
         blog_id = int(ff.readlines()[0].strip())
@@ -16,6 +18,7 @@ if __name__ == '__main__':
     elements = bs.find_all('article')
     if elements:
         text = elements[0].find_all('p')
-        send_email_qq(str(text))
+        if text:
+            send_email_qq(str(text))
         with open(blog_id_path, 'w') as ff:
             ff.write(str(blog_id + 1))
