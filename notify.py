@@ -8,7 +8,7 @@ from mail import send_email_qq, send_email_ctrip
 
 def notify():
     max_percent = 5
-    path = os.path.join(sys.path[0], 'zb_market.txt')
+    path = os.path.join(sys.path[0], 'zb_market1.txt')
     with open(path, 'rb') as ff:
         content = ff.readlines()
         notify_message = []

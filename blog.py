@@ -39,7 +39,7 @@ def spider_blog_detail(blog_href):
 
 
 if __name__ == '__main__':
-    blog_path = os.path.join(sys.path[0], 'blog_latest_title.txt')
+    blog_path = os.path.join(sys.path[0], 'blog_latest_title1.txt')
     with open(blog_path, 'r') as rr:
         blog_title = rr.readlines()
 

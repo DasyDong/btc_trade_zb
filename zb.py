@@ -106,7 +106,7 @@ def get_market():
     text = requests.get(url, timeout=30).text
     content = json.loads(text)
     keys = content.keys()
-    path = os.path.join(sys.path[0], 'zb_market.txt')
+    path = os.path.join(sys.path[0], 'zb_market1.txt')
     with open(path, 'wb') as ff:
         for key in keys:
             if not key.endswith('_usdt'):
