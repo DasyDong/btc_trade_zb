@@ -3,3 +3,4 @@
 local_settings.py
 zb_market
 blog_id
+blog_latest_title.text
