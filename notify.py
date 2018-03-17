@@ -6,11 +6,15 @@ from mail import send_email_qq, send_email_ctrip
 
 
 def notify():
+    max_percent = 5
     with open(sys.path[0] + '/zb_market', 'rb') as ff:
         content = ff.readlines()
         notify_message = []
         for line in content:
-            name, price = line.split(':')
+            try:
+                name, price = line.split(':')
+            except:
+                continue
             try:
                 price_new = float(get_usdt(name))
             except Exception as ex:
@@ -18,7 +22,9 @@ def notify():
                 continue
             price = float(price)
             percent = abs((price - price_new) / price_new * 100)
-            if percent >= 6:
+            if name in['ddm_usdt', 'cdc_usdt']:
+                max_percent = 10
+            if percent >= max_percent:
                 message = ' : '.join([name, str(price), str(price_new)]) + 'new'
                 notify_message.append(message)
         if notify_message:
