@@ -15,7 +15,8 @@ QQ={
 ZB={
     'access_key':'',
     'access_secret': '',
-    'trade_url':'',
-    'url':''
+    'trade_url': 'https://trade.zb.com/api/',
+    'url': 'http://api.zb.com/',
+    'platform_url': "https://www.zb.com/"
 }
 from local_settings import *
