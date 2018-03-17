@@ -1,6 +1,5 @@
 /.idea
 *.pyc
 local_settings.py
-zb_market
-blog_id
-blog_latest_title.text
+zb_market.txt
+blog_latest_title.txt

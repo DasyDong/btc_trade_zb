@@ -1,13 +1,15 @@
 # /usr/bin/python
 from __future__ import absolute_import
 from zb import get_market, get_usdt
-import os, sys
+import os
+import sys
 from mail import send_email_qq, send_email_ctrip
 
 
 def notify():
     max_percent = 5
-    with open(sys.path[0] + '/zb_market', 'rb') as ff:
+    path = os.path.join(sys.path[0], 'zb_market.txt')
+    with open(path, 'rb') as ff:
         content = ff.readlines()
         notify_message = []
         for line in content:
