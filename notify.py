@@ -3,7 +3,13 @@ from __future__ import absolute_import
 from zb import get_market, get_usdt
 import os
 import sys
-from mail import send_email_qq, send_email_ctrip
+import logging
+from mail import send_email_qq
+LOG = logging.getLogger(__name__)
+
+logging.basicConfig(filename="log/notify.log",
+                    format='%(asctime)s %(levelname)s %(message)s',
+                    level=logging.INFO)
 
 
 def notify():
@@ -35,4 +41,7 @@ def notify():
 
 
 if __name__ == '__main__':
-    notify()
+    try:
+        notify()
+    except Exception as e:
+        LOG.error(e)

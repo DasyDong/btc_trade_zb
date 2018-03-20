@@ -3,8 +3,15 @@ import requests
 from bs4 import BeautifulSoup
 import sys
 import os
+import logging
 from mail import send_email_qq
 from settings import ZB
+
+LOG = logging.getLogger(__name__)
+
+logging.basicConfig(filename="log/blog.log",
+                    format='%(asctime)s %(levelname)s %(message)s',
+                    level=logging.INFO)
 
 
 def spider_zb(url):
@@ -51,4 +58,4 @@ if __name__ == '__main__':
             with open(blog_path, 'w+') as ww:
                 ww.write(title)
     except Exception as e:
-        print(e)
+        LOG.error(e)
