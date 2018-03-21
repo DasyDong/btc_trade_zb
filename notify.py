@@ -42,6 +42,7 @@ def notify():
 
 if __name__ == '__main__':
     try:
+        LOG.info('start notify')
         notify()
     except Exception as e:
         LOG.error(e)
