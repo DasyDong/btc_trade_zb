@@ -45,8 +45,22 @@ def spider_blog_detail(blog_href):
         raise Exception('No detail blog found')
 
 
-if __name__ == '__main__':
-    LOG.info('start catch blog')
+def spider_blog_by_id():
+    blog_id_path = sys.path[0] + '/blog_id.txt'
+    with open(blog_id_path, 'r') as ff:
+        blog_id = int(ff.readlines()[0].strip())
+
+    url = ZB.get('platform_url') + 'i/blog?item={}&type='.format(blog_id)
+    elements = spider_zb(url)
+    if elements:
+        text = elements[0].find_all('p')
+        if text and '尊敬的ZB客户' in str(text):
+            send_email_qq(str(text))
+        with open(blog_id_path, 'w') as ff:
+            ff.write(str(blog_id + 1))
+
+
+def spider_blog_by_title():
     blog_path = os.path.join(sys.path[0], 'blog_latest_title1.txt')
     with open(blog_path, 'r') as rr:
         blog_title = rr.readlines()
@@ -60,3 +74,9 @@ if __name__ == '__main__':
                 ww.write(title)
     except Exception as e:
         LOG.error(e)
+
+
+if __name__ == '__main__':
+    LOG.info('start catch blog')
+    # spider_blog_by_title()
+    spider_blog_by_id()
