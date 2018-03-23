@@ -5,12 +5,11 @@ import os
 import sys
 import logging
 from mail import send_email_qq
-LOG = logging.getLogger(__name__)
+#LOG = logging.getLogger(__name__)
 
-logging.basicConfig(filename="log/notify.log",
-                    format='%(asctime)s %(levelname)s %(message)s',
-                    level=logging.INFO)
-
+#logging.basicConfig(filename="log/notify.log",
+#                    format='%(asctime)s %(levelname)s %(message)s',
+#                    level=logging.INFO)
 
 def notify():
     max_percent = 5
@@ -31,7 +30,7 @@ def notify():
             price = float(price)
             percent = abs((price - price_new) / price_new * 100)
             if name in['ddm_usdt', 'cdc_usdt']:
-                max_percent = 10
+                max_percent = 12
             if percent >= max_percent:
                 message = ' : '.join([name, str(price), str(price_new)]) + 'new'
                 notify_message.append(message)
@@ -42,7 +41,8 @@ def notify():
 
 if __name__ == '__main__':
     try:
-        LOG.info('start notify')
+        ##LOG.info('start notify')
         notify()
     except Exception as e:
-        LOG.error(e)
+        pass
+        ##LOG.error(e)

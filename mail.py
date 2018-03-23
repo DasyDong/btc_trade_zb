@@ -11,7 +11,7 @@ def send_email_qq(message):
     smtp_server = QQ.get('smtpserver')
 
     hour = datetime.now().hour
-    if hour in range(15):
+    if hour in range(25):
         qq = QQ.get('qq')[0]
         #pwd为qq邮箱的授权码
         pwd = QQ.get('password')[0]
