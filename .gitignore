@@ -1,0 +1,7 @@
+/.idea
+*.pyc
+local_settings.py
+zb_market1.txt
+blog_latest_title1.txt
+blog_id.txt
+/log
